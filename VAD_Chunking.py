@@ -127,9 +127,7 @@ def vad_collector(sample_rate, frame_duration_ms,
                 ring_buffer.clear()
                 voiced_frames = []
     if triggered:
-        #sys.stdout.write('-(%s)' % (frame.timestamp + frame.duration))
-        #print('Triggered')
-        None
+        sys.stdout.write('%d' % (round(float(frame.timestamp + frame.duration))))
     #print('\n')
     # If we have any leftover voiced audio when we run out of input,
     # yield it.
@@ -165,7 +163,7 @@ for file in filenames:
     for i, segment in enumerate(segments):
         path = directory + newNames[j] + '_%004d.wav' % (i+1,)
         print('\tWriting\t%s' % (path,))
-        write_wave(path, segment, sample_rate)
+        #write_wave(path, segment, sample_rate)
     print('\n')
     j = j + 1 
 
